@@ -158,7 +158,6 @@
     return cell;
 }
 
-
 -(void)createStartDatePickerForCell:(UITableViewCell*)cell{
     
     NSArray *subviews = [cell.contentView subviews];
@@ -273,8 +272,9 @@
     
     else if (selectedCell.tag==startTimeIndex || selectedCell.tag ==endDatePickerIndex){
         
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
+            }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [self.calendarTableView endUpdates];
     
