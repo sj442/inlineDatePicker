@@ -9,5 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface calendarViewController : UITableViewController < UITableViewDataSource, UITableViewDelegate>
+{
+    NSInteger section;
+    
+    NSInteger startTimeIndex;
+    
+    NSInteger endTimeIndex;
+    
+    NSInteger rows;
+}
+
 
 @end

@@ -9,17 +9,12 @@
 #import "calendarViewController.h"
 
 @interface calendarViewController ()
-{
 
-NSInteger startTimeIndex;
-    
-NSInteger endTimeIndex;
+{
     
 NSInteger startDatePickerIndex;
     
 NSInteger endDatePickerIndex;
-    
-NSInteger rows;
     
 }
 
@@ -50,6 +45,7 @@ NSInteger rows;
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    section=0;
     startTimeIndex = 0;
     endTimeIndex = 1;
     startDatePickerIndex = 100;
@@ -111,7 +107,6 @@ NSInteger rows;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     if (indexPath.row==startDatePickerIndex || indexPath.row==endDatePickerIndex){
         
         return 200;
@@ -156,7 +151,6 @@ NSInteger rows;
         cell.textLabel.text = @"End Time";
         
         NSLog(@"end time cell called");
-
         
     } else if (cell.tag == startDatePickerIndex) {
         [self createStartDatePickerForCell:cell];
@@ -186,6 +180,8 @@ NSInteger rows;
         
         self.startdatePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         
+        [self.startdatePicker addTarget:self action:@selector(startDatePicked:) forControlEvents:UIControlEventValueChanged];
+        
         [self.startdatePicker setDate:_startDate];
         
         [cell.contentView addSubview:self.startdatePicker];
@@ -205,10 +201,22 @@ NSInteger rows;
         
         self.endDatePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
         
+        [self.endDatePicker addTarget:self action:@selector(endDatePicked:) forControlEvents:UIControlEventValueChanged];
+        
         [self.endDatePicker setDate:_endDate];
         
         [cell.contentView addSubview:self.endDatePicker];
     }
+}
+
+-(void)startDatePicked:(id)sender{
+    
+    self.startDate = self.startdatePicker.date;
+}
+
+-(void)endDatePicked:(id)sender{
+    
+    self.endDate = self.endDatePicker.date;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -290,7 +298,7 @@ NSInteger rows;
     
     NSLog(@"end time index is now %d", endTimeIndex);
 
-    NSIndexPath *startDatePickerIP = [NSIndexPath indexPathForRow:startDatePickerIndex inSection:0];
+    NSIndexPath *startDatePickerIP = [NSIndexPath indexPathForRow:startDatePickerIndex inSection:section];
     
     [self.tableView insertRowsAtIndexPaths:@[startDatePickerIP] withRowAnimation:UITableViewRowAnimationFade];
     
@@ -299,7 +307,7 @@ NSInteger rows;
 
 -(void)hideStartDatePicker{
     
-    NSIndexPath *deleteStartDatePickerIP = [NSIndexPath indexPathForRow:startDatePickerIndex inSection:0];
+    NSIndexPath *deleteStartDatePickerIP = [NSIndexPath indexPathForRow:startDatePickerIndex inSection:section];
     
     [self.tableView deleteRowsAtIndexPaths:@[deleteStartDatePickerIP] withRowAnimation:UITableViewRowAnimationFade];
     
@@ -322,14 +330,14 @@ NSInteger rows;
     
     NSLog(@"endDatePicker index is now %d", endDatePickerIndex);
     
-    NSIndexPath *endDatePickerIP = [NSIndexPath indexPathForRow:endDatePickerIndex inSection:0];
+    NSIndexPath *endDatePickerIP = [NSIndexPath indexPathForRow:endDatePickerIndex inSection:section];
     
     [self.tableView insertRowsAtIndexPaths:@[endDatePickerIP] withRowAnimation:UITableViewRowAnimationFade];
     }
 
 -(void)hideEndDatePicker{
     
-    NSIndexPath *deleteEndDatePickerIP = [NSIndexPath indexPathForRow:endDatePickerIndex inSection:0];
+    NSIndexPath *deleteEndDatePickerIP = [NSIndexPath indexPathForRow:endDatePickerIndex inSection:section];
     
     [self.tableView deleteRowsAtIndexPaths:@[deleteEndDatePickerIP] withRowAnimation:UITableViewRowAnimationFade];
     
