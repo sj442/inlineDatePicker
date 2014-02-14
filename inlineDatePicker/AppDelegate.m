@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "calendarViewController.h"
+#import "tableViewController.h"
 
 @implementation AppDelegate
 
@@ -16,9 +16,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    
-    calendarViewController *calendarVC = [[calendarViewController alloc]init];
-    self.window.rootViewController = calendarVC;
+        
+    tableViewController *tableVC = [[tableViewController alloc]initWithNibName:@"tableViewController" bundle:nil];
+    self.window.rootViewController = tableVC;
     [self.window makeKeyAndVisible];
     return YES;
 }

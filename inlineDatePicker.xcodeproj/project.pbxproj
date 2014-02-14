@@ -20,6 +20,8 @@
 		166BB5E718AE62AF002C9796 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 166BB5E518AE62AF002C9796 /* InfoPlist.strings */; };
 		166BB5E918AE62AF002C9796 /* inlineDatePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BB5E818AE62AF002C9796 /* inlineDatePickerTests.m */; };
 		166BB5F418AE62E2002C9796 /* calendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BB5F318AE62E2002C9796 /* calendarViewController.m */; };
+		166BB5FB18AE9865002C9796 /* tableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166BB5FA18AE9865002C9796 /* tableViewController.xib */; };
+		166BB5FE18AE9893002C9796 /* tableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166BB5FD18AE9893002C9796 /* tableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		166BB5E818AE62AF002C9796 /* inlineDatePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = inlineDatePickerTests.m; sourceTree = "<group>"; };
 		166BB5F218AE62E2002C9796 /* calendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calendarViewController.h; sourceTree = "<group>"; };
 		166BB5F318AE62E2002C9796 /* calendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calendarViewController.m; sourceTree = "<group>"; };
+		166BB5FA18AE9865002C9796 /* tableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tableViewController.xib; sourceTree = "<group>"; };
+		166BB5FC18AE9893002C9796 /* tableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tableViewController.h; sourceTree = "<group>"; };
+		166BB5FD18AE9893002C9796 /* tableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +119,9 @@
 				166BB5D318AE62AF002C9796 /* AppDelegate.m */,
 				166BB5F218AE62E2002C9796 /* calendarViewController.h */,
 				166BB5F318AE62E2002C9796 /* calendarViewController.m */,
+				166BB5FA18AE9865002C9796 /* tableViewController.xib */,
+				166BB5FC18AE9893002C9796 /* tableViewController.h */,
+				166BB5FD18AE9893002C9796 /* tableViewController.m */,
 				166BB5D518AE62AF002C9796 /* Images.xcassets */,
 				166BB5CA18AE62AF002C9796 /* Supporting Files */,
 			);
@@ -225,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				166BB5CE18AE62AF002C9796 /* InfoPlist.strings in Resources */,
+				166BB5FB18AE9865002C9796 /* tableViewController.xib in Resources */,
 				166BB5D618AE62AF002C9796 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166BB5FE18AE9893002C9796 /* tableViewController.m in Sources */,
 				166BB5F418AE62E2002C9796 /* calendarViewController.m in Sources */,
 				166BB5D418AE62AF002C9796 /* AppDelegate.m in Sources */,
 				166BB5D018AE62AF002C9796 /* main.m in Sources */,
