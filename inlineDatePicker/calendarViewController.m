@@ -108,7 +108,7 @@ NSInteger rows;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    //resetting hte tag of the cell being reused to 0
+    //resetting the tag of the cell being reused
     
     cell.tag =indexPath.row;
 
@@ -176,9 +176,27 @@ NSInteger rows;
     
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
+    selectedCell.tag = indexPath.row;
+    
     NSLog(@"selected cell tag %d", selectedCell.tag);
     
-    if (selectedCell.tag ==startTimeIndex){
+    if (selectedCell.tag==endTimeIndex && startDatePickerIndex!=100){
+        
+        NSLog(@"opening end time date picker when start time date picker is open");
+        
+        [self hideStartDatePicker];
+        
+        [self showEndDatePicker];
+        
+    } else if (selectedCell.tag==startTimeIndex && endDatePickerIndex !=100){
+        
+        NSLog(@"opening start time date picker when end time date picker is open");
+        
+        [self hideEndDatePicker];
+        
+        [self showStartDatePicker];
+        
+    } else if (selectedCell.tag ==startTimeIndex){
         
         if (startDatePickerIndex !=100){
             
@@ -200,10 +218,13 @@ NSInteger rows;
             [self showEndDatePicker];
         }
 
-    } else if (selectedCell.tag==startTimeIndex || selectedCell.tag ==endDatePickerIndex){
+    }
+    
+    else if (selectedCell.tag==startTimeIndex || selectedCell.tag ==endDatePickerIndex){
         
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+    
     [self.tableView endUpdates];
     
     }
