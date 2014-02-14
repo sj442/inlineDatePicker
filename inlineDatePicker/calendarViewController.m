@@ -23,6 +23,14 @@ NSInteger rows;
     
 }
 
+@property (strong, nonatomic) UIDatePicker *startdatePicker;
+
+@property (strong, nonatomic) UIDatePicker *endDatePicker;
+
+@property (strong, nonatomic) NSDate *startDate;
+
+@property (strong, nonatomic) NSDate *endDate;
+
 @end
 
 @implementation calendarViewController
@@ -47,6 +55,8 @@ NSInteger rows;
     startDatePickerIndex = 100;
     endDatePickerIndex = 100;
     rows=2;
+    self.startDate = [NSDate date];
+    self.endDate = [NSDate date];
         
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -99,6 +109,19 @@ NSInteger rows;
     return view;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    if (indexPath.row==startDatePickerIndex || indexPath.row==endDatePickerIndex){
+        
+        return 200;
+        
+    } else {
+        
+        return 50;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -145,8 +168,6 @@ NSInteger rows;
         [self createEndDatePickerForCell:cell];
         
         NSLog(@"end time datepicker cell called");
-
-        
     }
     return cell;
 }
@@ -154,10 +175,40 @@ NSInteger rows;
 
 -(void)createStartDatePickerForCell:(UITableViewCell*)cell{
     
+    NSArray *subviews = [cell.contentView subviews];
+    
+    for (UIView *subview in subviews){
+        
+        [subview removeFromSuperview];
+    }
+    
+    if (cell.tag ==startDatePickerIndex){
+        
+        self.startdatePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        
+        [self.startdatePicker setDate:_startDate];
+        
+        [cell.contentView addSubview:self.startdatePicker];
+    }
 }
 
 -(void)createEndDatePickerForCell:(UITableViewCell*)cell{
     
+    NSArray *subviews = [cell.contentView subviews];
+    
+    for (UIView *subview in subviews){
+        
+        [subview removeFromSuperview];
+    }
+    
+    if (cell.tag ==endDatePickerIndex){
+        
+        self.endDatePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+        
+        [self.endDatePicker setDate:_endDate];
+        
+        [cell.contentView addSubview:self.endDatePicker];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
